@@ -78,6 +78,7 @@ public:
   bool loadPrivateKey(Stream &stream, size_t size);
   bool verify(const char *fingerprint, const char *domain_name);
   void setHandshakeTimeout(unsigned long handshake_timeout);
+  void setCiphersuites(const int *list);
   void setAlpnProtocols(const char **alpn_protos);
 
   // Certain protocols start in plain-text; and then have the client

@@ -40,6 +40,8 @@ typedef struct sslclient_context {
   int last_error;
   int peek_buf;
 
+  const int *cipher_list = nullptr;
+
 } sslclient_context;
 
 void ssl_init(sslclient_context *ssl_client);

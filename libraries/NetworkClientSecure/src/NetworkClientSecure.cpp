@@ -451,6 +451,10 @@ void NetworkClientSecure::setHandshakeTimeout(unsigned long handshake_timeout) {
   sslclient->handshake_timeout = handshake_timeout * 1000;
 }
 
+void NetworkClientSecure::setCiphersuites(const int *list) {
+  sslclient->cipher_list = list;
+}
+
 void NetworkClientSecure::setAlpnProtocols(const char **alpn_protos) {
   _alpn_protos = alpn_protos;
 }

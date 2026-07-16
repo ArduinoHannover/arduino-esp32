@@ -189,6 +189,11 @@ int start_ssl_client(
   if ((ret = mbedtls_ssl_config_defaults(&ssl_client->ssl_conf, MBEDTLS_SSL_IS_CLIENT, MBEDTLS_SSL_TRANSPORT_STREAM, MBEDTLS_SSL_PRESET_DEFAULT)) != 0) {
     return handle_error(ret);
   }
+  
+  if (ssl_client->cipher_list != nullptr) {
+    log_v("Applying custom ciphersuite list");
+    mbedtls_ssl_conf_ciphersuites(&ssl_client->ssl_conf, ssl_client->cipher_list);
+  }
 
   if (alpn_protos != NULL) {
     log_v("Setting ALPN protocols");
